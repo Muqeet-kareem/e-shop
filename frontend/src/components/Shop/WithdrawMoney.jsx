@@ -79,7 +79,7 @@ const WithdrawMoney = () => {
   };
 
   const error = () => {
-    toast.error("You not have enough balance to withdraw!");
+    toast.error("You do not have enough balance to withdraw!");
   };
 
   const withdrawHandler = async () => {

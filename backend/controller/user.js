@@ -21,6 +21,7 @@ router.post("/create-user", async (req, res, next) => {
 
     const myCloud = await cloudinary.v2.uploader.upload(avatar, {
       folder: "avatars",
+      transformation: { width: 1000, height: 1000, crop: "limit" },
     });
 
     const user = {
@@ -35,7 +36,7 @@ router.post("/create-user", async (req, res, next) => {
 
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `https://eshop-tutorial-pyri.vercel.app/activation/${activationToken}`;
+    const activationUrl = `http://localhost:3000/activation/${activationToken}`;
 
     try {
       await sendMail({
@@ -106,7 +107,7 @@ router.post(
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return next(new ErrorHandler("Please provide the all fields!", 400));
+        return next(new ErrorHandler("Please provide all the fields!", 400));
       }
 
       const user = await User.findOne({ email }).select("+password");
@@ -329,7 +330,7 @@ router.put(
 
       if (req.body.newPassword !== req.body.confirmPassword) {
         return next(
-          new ErrorHandler("Password doesn't matched with each other!", 400)
+          new ErrorHandler("Password doesn't match with each other!", 400)
         );
       }
       user.password = req.body.newPassword;

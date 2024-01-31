@@ -17,6 +17,7 @@ const Hero = () => {
         >
           Best Collection for <br /> home Decoration
         </h1>
+        <h3>At Muqeet Limited</h3>
         <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#000000ba]">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
           assumenda? Quisquam itaque <br /> exercitationem labore vel, dolore
